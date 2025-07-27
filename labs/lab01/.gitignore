@@ -1,0 +1,5 @@
+grafana_data
+prometheus_data
+.env
+prometheus/prometues.yml
+loki_data

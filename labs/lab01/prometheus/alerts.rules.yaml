@@ -1,0 +1,12 @@
+groups:
+- name: Lab 01 Grupo de Alertas
+  rules:
+  - alert: " Alerta - Aplicação com o status code diferente de 200 "
+    expr: probe_http_status_code <= 199 OR probe_http_status_code >= 400
+    for: 10m
+    labels:
+      severity: URGENTE
+    annotations:
+      description: |
+        - Detalhe: Status code diferente de 200 da instância {{ $labels.instance }}.
+        - Valor: {{ $value }}
