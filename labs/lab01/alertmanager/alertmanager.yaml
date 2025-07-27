@@ -1,12 +1,12 @@
 global:
   smtp_smarthost: 'smtp.gmail.com:587'
-  smtp_from: 'no-reply@gmail.com'
-  smtp_auth_username: 'no-reply@gmail.com'
-  smtp_auth_password: 'SENHA_APP_DO_GOOGLE'
+  smtp_from: 'no-reply@gmail.com' #Substituir pelo seu email
+  smtp_auth_username: 'no-reply@gmail.com' #Substituir pelo seu email
+  smtp_auth_password: 'SENHA_APP_DO_GOOGLE' #Substituir pela sua senha do app do google
   smtp_require_tls: true
 
 route:
-  receiver: email-receiver
+  receiver: webhook-receiver
   group_interval: 60s
   repeat_interval: 86400s
   group_by: ["job", "alertname"]
@@ -22,5 +22,9 @@ route:
 receivers:
   - name: 'email-receiver'
     email_configs:
-      - to: 'suporte@gmail.com'
+      - to: 'suporte@gmail.com' #Substituir pelo seu email
+        send_resolved: true
+  - name: 'webhook-receiver'
+    webhook_configs:
+      - url: 'https://webhook.site/4f9e880e-5839-4cd7-8c09-7e8414ca4cc7' #Substituir pelo seu webhook
         send_resolved: true

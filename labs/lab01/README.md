@@ -63,7 +63,6 @@ Exemplo de saída do arquivo .env.
 ```sh
 ADMIN_PASSWORD = teste
 ADMIN_USER = teste
-GRAFANA_VERSION = latest
 ```
 
 Existem algumas dependências para que o laboratório funcione.
