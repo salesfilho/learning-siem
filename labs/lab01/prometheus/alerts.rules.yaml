@@ -1,12 +1,51 @@
 groups:
-- name: Lab 01 Grupo de Alertas
-  rules:
-  - alert: " Alerta - Aplicação com o status code diferente de 200 "
-    expr: probe_http_status_code <= 199 OR probe_http_status_code >= 400
-    for: 10m
-    labels:
-      severity: URGENTE
-    annotations:
-      description: |
-        - Detalhe: Status code diferente de 200 da instância {{ $labels.instance }}.
-        - Valor: {{ $value }}
+  - name: Alertas de Indisponibilidade de Serviços - Lab01
+    rules:
+      - alert: ContainerPrometheusDown
+        expr: up{job="prometheus"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Prometheus indisponível"
+          description: "O Prometheus está fora do ar."
+      - alert: ContainerAlertmanagerDown
+        expr: up{job="alertmanager"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Alertmanager indisponível"
+          description: "O Alertmanager está fora do ar."
+      - alert: ContainerNodeExporterDown
+        expr: up{job="node"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node Exporter indisponível"
+          description: "O Node Exporter está fora do ar."
+      - alert: ContainerLokiDown
+        expr: up{job="loki"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Loki indisponível"
+          description: "O Loki está fora do ar."
+      - alert: ContainerPromtailDown
+        expr: up{job="promtail"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Promtail indisponível"
+          description: "O Promtail está fora do ar."
+      - alert: ContainerCadvisorDown
+        expr: up{job="cadvisor"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "cAdvisor indisponível"
+          description: "O cAdvisor está fora do ar."

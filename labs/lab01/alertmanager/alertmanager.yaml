@@ -9,7 +9,7 @@ route:
   receiver: email-receiver
   group_interval: 60s
   repeat_interval: 86400s
-  group_by: [...]
+  group_by: ["job", "alertname"]
   group_wait: 30s
   routes:
   - match:
