@@ -18,6 +18,10 @@ route:
       alertname: " Alerta - Aplicação com o status code diferente de 200 "
     receiver: "email-receiver"
     continue: true
+  - match:
+      alertname: "ErrosDetectadosNoLog"
+    receiver: email-receiver
+    continue: true
 
 receivers:
   - name: 'email-receiver'

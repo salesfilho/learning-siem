@@ -1,0 +1,13 @@
+groups:
+  - name: alerta-logs
+    rules:
+      - alert: ErrosDetectadosNoLog
+        expr: |
+          count_over_time({job="docker"} | detected_level = `error` [1m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+          detected_level: "error"
+        annotations:
+          summary: "Erro encontrado nos logs"
+          description: "Foram encontrados erros nos logs nos últimos minutos."
