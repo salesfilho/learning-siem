@@ -1,0 +1,137 @@
+version: "3.9"
+services:
+# Aplicação do Grafana (visualização de dados)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "80:3000"
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_GRAFANA_PASSWORD}
+      - GF_SECURITY_ADMIN_USER=${ADMIN_GRAFANA_USER}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_PROXY_ENABLED=true
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+      - GF_FEATURE_TOGGLES_ENABLE= publicDashboards
+    restart: unless-stopped
+    expose:
+      - "3000"
+    depends_on:
+      - prometheus
+      - loki
+    networks:
+      - lab01-network
+
+# Aplicação do Prometheus (coleta de dados)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+    - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - ./prometheus_data:/prometheus
+      - ./prometheus/alerts.rules.yaml:/etc/prometheus/alerts.rules
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=120d'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - "9090"
+    networks:
+      - lab01-network
+
+# Aplicação do Node Exporter (coleta de dados)
+  nodeexporter:
+    image: prom/node-exporter:latest
+    container_name: nodeexporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    expose:
+      - 9100
+    networks:
+      - lab01-network      
+
+# Aplicação do AlertManager (gerenciamento de alertas)
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    restart: unless-stopped
+    command:
+      - "--config.file=/prometheus/alertmanager.yaml"
+    volumes:
+      - "./alertmanager/alertmanager.yaml:/prometheus/alertmanager.yaml"
+    ports:
+      - "9093:9093"
+    networks:
+      - lab01-network
+
+# Aplicação do Loki (coleta de dados)
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
+    user: "0"
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./loki/loki.yaml:/etc/loki/config.yaml
+      - ./loki/rules:/loki/rules/fake # Monta a pasta de regras do host para o Loki
+      - ./loki_data:/var/loki/data
+    networks:
+      - lab01-network
+
+# Aplicação do Promtail (transmissão de dados)
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    restart: unless-stopped
+    ports:
+      - "9080:9080"
+    volumes:
+      - /var/log:/var/log
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./promtail:/etc/promtail
+    command: -config.file=/etc/promtail/promtail.yaml
+    depends_on:
+      - prometheus
+      - loki
+    networks:
+      - lab01-network
+
+# Aplicação do cadvisor (coleta de dados)
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - lab01-network
+
+networks:
+  lab01-network:

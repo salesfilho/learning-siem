@@ -1,0 +1,63 @@
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  grpc_listen_port: 9096
+  http_listen_address: 0.0.0.0
+  grpc_listen_address: 0.0.0.0
+
+ingester:
+  wal:
+    dir: "/tmp/wal" # Este pode permanecer, é um diretório temporário interno ao contêiner
+  lifecycler:
+    address: 127.0.0.1
+    ring:
+      kvstore:
+        store: inmemory
+      replication_factor: 1
+  chunk_idle_period: 5m
+  chunk_retain_period: 30s
+  chunk_target_size: 1536000
+  chunk_block_size: 262144
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+storage_config:
+  # ATENÇÃO: Ajustado para o caminho do volume mapeado
+  filesystem:
+    directory: /var/loki/data/chunks # Assumindo que o volume Docker mapeará para cá
+
+compactor:
+  # ATENÇÃO: Ajustado para o caminho do volume mapeado
+  working_directory: /var/loki/data/compactor # Assumindo que o volume Docker mapeará para cá
+
+limits_config:
+  reject_old_samples_max_age: 168h
+  ingestion_rate_mb: 32
+  ingestion_burst_size_mb: 64
+
+ruler:
+  storage:
+    type: local
+    local:
+      # ATENÇÃO: Ajustado para o caminho do volume mapeado para regras
+      directory: /loki/rules/fake # Onde as regras do seu host serão montadas
+  # ATENÇÃO: Ajustado para o caminho do volume mapeado para regras
+  rule_path: /loki/rules/fake # Onde o Loki vai procurar e armazenar as regras
+  ring:
+    kvstore:
+      store: inmemory
+  enable_api: true
+  alertmanager_url: http://alertmanager:9093
+  remote_write:
+    enabled: true
+    client:
+      url: http://prometheus:9090/api/v1/write # Isso é para Loki enviar alertas como métricas para o Prometheus, se necessário
