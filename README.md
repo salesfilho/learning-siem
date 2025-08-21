@@ -30,7 +30,81 @@ https://docs.google.com/spreadsheets/d/1SJzScpDU_WYSRct4hfk0BEO3OnlhUNWtU0rwoEiq
 4. **Projeto final**: Simulação de um cenário real com relatório de detecção de ameaças.  
 
 ---
+### PLANO DO CURSO
+O curso tem como objetivos principais apresentar os fundamentos teóricos e realizar atividades práticas para consolidar os conhecimentos sobre SIEM (Security Information and Event Management).
 
+##### RESUMO DO CURSO
+
+
+| Módulo                                     | Horas   |
+| ------------------------------------------ | ------- |
+| 1. Contexto e Fundamentos                  | 2h      |
+| 2. Arquitetura e Elementos                 | 4h      |
+| 3. Hands-on 1 (Observabilidade)            | 4h      |
+| 4. Hands-on 2 (Testes de ataque e alertas) | 4h      |
+| 5. Hands-on 3 (Wazuh + SOAR)               | 6h      |
+| 6. Projeto Final (SIEM + IA)               | 10h     |
+| **Total**                                  | **30h** |
+
+
+#### 1. Contexto e Fundamentos (2h)
+
+- Conceito de SIEM (SIM + SEM).
+- Requisitos-chave (coleta, correlação, dashboards, automação).
+- Normas e frameworks: NIST, MITRE ATT&CK, ISO 27001.
+- Cenário atual: SOC (Security Operation Center), SIEM (Security Information and Event Management), SOAR (Security Orchestration, Automation, and Response), XDR (Extended Detection and Response).
+(Exemplos: OSSIM / Prelude)
+
+### 2. Arquitetura e Elementos (4h)
+
+- Arquitetura típica de SIEM: agentes, ingestão, normalização, storage, correlação, dashboards.
+- Diferença entre centralização de logs e SIEM real.
+- Introdução às ferramentas open source (Wazuh, ELK, Graylog).
+- Diferencial: integração com SOAR e UEBA (User and Entity Behavior Analytics).
+
+### 3. Hands-on 1 – Observabilidade como base para SIEM (4h)
+
+- Uso de Prometheus + Loki + Grafana + Alertmanager.
+- Coleta de métricas de rede e sistema.
+- Construção de dashboards.
+- Criação de alertas simples (thresholds, disponibilidade, anomalias básicas).
+**Objetivo:** Preparar os alunos para diferenciar observabilidade de SIEM.
+
+### 4. Hands-on 2 – Simulação de Ataques e Geração de Alertas (4h)
+
+- Injeção de logs e métricas com eventos simulados (ataques de força bruta, portas abertas, tentativas SSH).
+- Demonstração de como esses alertas aparecem em Grafana + Loki.
+- Discussão: até onde observabilidade vai, e por que precisamos de SIEM.
+
+### 5. Hands-on 3 – SIEM com Wazuh + Shuffle SOAR (6h)
+
+- Instalação/configuração do Wazuh Manager + Agent.
+- Ingestão de logs (Linux, Windows, Firewall, Cloud).
+- Criação de regras e dashboards no Kibana.
+- Integração com Shuffle (SOAR open source) para automatizar respostas.
+
+**Casos práticos:**
+
+- Resposta automática a brute force.
+- Bloqueio de IP malicioso.
+
+### 6. Projeto Final – SIEM + Agente de IA (10h)
+
+- Orientação por grupos para construir um mini SOC.
+**Atividades chave:**
+
+- Escolher fonte de logs (ex.: firewall pfSense, servidor web, endpoint Windows).
+- Ingerir no Wazuh.
+- Criar dashboards de visualização.
+- Configurar regras de detecção.
+- Automatizar uma resposta simples via SOAR.
+
+**ir além**: integração com agente de IA para:
+- Responder perguntas sobre incidentes.
+- Gerar relatórios automáticos em linguagem natural.
+- Priorizar alertas (ex.: usando embeddings + Qdrant).
+
+---
 #### **Indicadores de Sucesso**  
 - **Taxa de conclusão**: 90% dos alunos finalizam o curso.  
 - **Avaliação média**: Nota mínima de 8/10 na satisfação dos participantes.  
