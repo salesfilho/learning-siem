@@ -39,11 +39,10 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 | Módulo                                     | Horas   |
 | ------------------------------------------ | ------- |
 | 1. Contexto e Fundamentos                  | 2h      |
-| 2. Arquitetura e Elementos                 | 4h      |
-| 3. Hands-on 1 (Observabilidade)            | 4h      |
-| 4. Hands-on 2 (Testes de ataque e alertas) | 4h      |
-| 5. Hands-on 3 (Wazuh + SOAR)               | 6h      |
-| 6. Projeto Final (SIEM + IA)               | 10h     |
+| 2. Arquitetura e Elementos                 | 2h      |
+| 3. Hands-on 1 (Observabilidade)            | 8h      |
+| 4. Hands-on 2 (Testes de ataque e alertas) | 8h      |
+| 5. Projeto Final (Wazuh + SOAR + IA)       | 10h     |
 | **Total**                                  | **30h** |
 
 
@@ -117,6 +116,97 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 
 #### **- Início:**  07/09/2025									
 #### **- Término:**  30/09/2025	
+
+### 📅 Cronograma do Projeto - Setembro/2025
+
+<table>
+  <tr>
+    <th rowspan="2">Atividade / Data</th>
+    <th colspan="5">Semana 1</th>
+    <th colspan="5">Semana 2</th>
+    <th colspan="5">Semana 3</th>
+  </tr>
+  <tr>
+    <th>08 Seg</th><th>09 Ter</th><th>10 Qua</th><th>11 Qui</th><th>12 Sex</th>
+    <th>15 Seg</th><th>16 Ter</th><th>17 Qua</th><th>18 Qui</th><th>19 Sex</th>
+    <th>22 Seg</th><th>23 Ter</th><th>24 Qua</th><th>25 Qui</th><th>26 Sex</th>
+  </tr>
+  <tr>
+    <td>1. Contexto e Fundamentos</td>
+    <td>✅</td>
+     <td>☑️</td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+  </tr>
+  <tr>
+    <td>2. Arquitetura e Elementos</td>
+    <td></td>
+     <td></td>
+     <td>✅</td>
+     <td>☑️</td>
+     <td>✅</td>
+    <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+  </tr>
+  <tr>
+    <td>3. Hands-on 1 (Observabilidade)</td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td>✅</td>
+     <td>☑️</td>
+     <td>✅</td>
+     <td>☑️</td>
+     <td>✅</td>     
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+  </tr>
+  <tr>
+    <td>4. Projeto Final (Wazuh + SOAR + IA)</td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    <td>✅</td>
+     <td>☑️</td>
+     <td>✅</td>
+     <td>☑️</td>
+     <td>✅</td>
+  </tr>
+</table>
+
+- ✅ Momentos síncronos (18hs)
+- ☑️ Momentos Assíncronos (12 hs)
 
 #### Módulo 7.1 - Monitoramento e Análise de Ameaças (30h)									
 
