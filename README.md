@@ -39,10 +39,9 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 | Módulo                                     | Horas   |
 | ------------------------------------------ | ------- |
 | 1. Contexto e Fundamentos                  | 2h      |
-| 2. Arquitetura e Elementos                 | 2h      |
-| 3. Hands-on 1 (Observabilidade)            | 8h      |
-| 4. Hands-on 2 (Testes de ataque e alertas) | 8h      |
-| 5. Projeto Final (Wazuh + SOAR + IA)       | 10h     |
+| 2. Arquitetura e Elementos                 | 4h      |
+| 3. Hands-on 1 (Observabilidade)            | 12h     |
+| 4. Projeto Final (Wazuh + SOAR + IA)       | 12h     |
 | **Total**                                  | **30h** |
 
 
@@ -69,13 +68,7 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 - Criação de alertas simples (thresholds, disponibilidade, anomalias básicas).
 **Objetivo:** Preparar os alunos para diferenciar observabilidade de SIEM.
 
-### 4. Hands-on 2 – Simulação de Ataques e Geração de Alertas (4h)
-
-- Injeção de logs e métricas com eventos simulados (ataques de força bruta, portas abertas, tentativas SSH).
-- Demonstração de como esses alertas aparecem em Grafana + Loki.
-- Discussão: até onde observabilidade vai, e por que precisamos de SIEM.
-
-### 5. Hands-on 3 – SIEM com Wazuh + Shuffle SOAR (6h)
+### 4. Hands-on 2 – SIEM com Wazuh + Shuffle SOAR (6h)
 
 - Instalação/configuração do Wazuh Manager + Agent.
 - Ingestão de logs (Linux, Windows, Firewall, Cloud).
@@ -87,7 +80,7 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 - Resposta automática a brute force.
 - Bloqueio de IP malicioso.
 
-### 6. Projeto Final – SIEM + Agente de IA (10h)
+### 5. Projeto Final – SIEM + Agente de IA (10h)
 
 - Orientação por grupos para construir um mini SOC.
 **Atividades chave:**
