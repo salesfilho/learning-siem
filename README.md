@@ -200,6 +200,7 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 
 - ✅ Momentos síncronos (18hs)
 - ☑️ Momentos Assíncronos (12 hs)
+- ⏰ Horário: 13:00 às 15:00
 
 #### Módulo 7.1 - Monitoramento e Análise de Ameaças (30h)									
 
