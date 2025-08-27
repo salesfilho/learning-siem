@@ -32,5 +32,5 @@ docker compose up -d
 ```
 
 ```
-docker volume rm $(docker volume ls -q -f name=single-node)
+docker volume rm $(docker volume ls -q -f name=wazuh)
 ```
