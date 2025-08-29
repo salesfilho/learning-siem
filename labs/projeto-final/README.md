@@ -26,7 +26,17 @@ cd wazuh-docker/single-node
 docker compose -f generate-indexer-certs.yml run --rm generator
 ```
 
-5) Subir o ambiente com docker compose:
+5) Edite o arquivo do docker compose nas linhas 22 e 53 onde tem a porta 9200, alterar para 9100. Conforme mostrado abaixo:
+
+```
+      - INDEXER_URL=https://wazuh.indexer:9100
+```
+
+```
+      - "9100:9200"
+```
+
+6) Subir o ambiente com docker compose:
 
 ```
 docker compose up -d
@@ -66,7 +76,21 @@ git clone https://github.com/Shuffle/Shuffle
 cd Shuffle
 ```
 
-2) Realizar o comando do docker compose:
+2) Alterar o arquivo do docker compose nas linhas 55, 56 e 57 para o seguinte:
+
+```
+      - SHUFFLE_STATS_DISABLED=false
+      - SHUFFLE_LOGS_DISABLED=false
+      #- SHUFFLE_SWARM_CONFIG=run
+```
+
+3) Colocar as permissões na pasta do shuffle-database:
+
+```
+sudo chown 1000:1000 -R shuffle-database
+```
+
+4) Realizar o comando do docker compose:
 
 ```
 docker compose up -d
