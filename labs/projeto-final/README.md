@@ -1,6 +1,58 @@
-# Instalação o Shuffle
+# Instalação do Wazuh
 
-## Realizar primeiramente a instalação do Wazuh. As instruções estão no README da pasta wazuh.
+Para realizar o deploy do Wazuh, é necessário seguir os passos abaixo:
+
+1) Incrementar o valor do max_map_count no seu host (Linux).
+
+```
+sudo sysctl -w vm.max_map_count=262144
+```
+
+2) Clonar o repositório:
+
+```
+git clone https://github.com/wazuh/wazuh-docker.git -b v4.12.0
+```
+
+3) Acessar a pasta do single node
+
+```
+cd wazuh-docker/single-node
+```
+
+4) Rodar a criação dos certificados:
+
+```
+docker compose -f generate-indexer-certs.yml run --rm generator
+```
+
+5) Subir o ambiente com docker compose:
+
+```
+docker compose up -d
+```
+
+O ambiente leva cerca de 1 min para subir tudo. Basta acessar no browser o https://localhost e usar as credenciais
+
+```
+Login: admin
+Senha: SecretPassword
+```
+
+## Para remover
+
+Para remover basta executar os dois comandos abaixo:
+
+```
+docker compose down
+```
+
+```
+docker volume rm $(docker volume ls -q -f name=single-node)
+```
+
+
+# Instalação o Shuffle
 
 Instalar o Shuffle nessa pasta para não misturar com os demais arquivos do projeto.
 
@@ -8,6 +60,9 @@ Instalar o Shuffle nessa pasta para não misturar com os demais arquivos do proj
 
 ```
 git clone https://github.com/Shuffle/Shuffle
+```
+
+```
 cd Shuffle
 ```
 
