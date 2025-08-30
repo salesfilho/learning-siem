@@ -26,11 +26,7 @@ cd wazuh-docker/single-node
 docker compose -f generate-indexer-certs.yml run --rm generator
 ```
 
-5) Edite o arquivo do docker compose nas linhas 22 e 53 onde tem a porta 9200, alterar para 9100. Conforme mostrado abaixo:
-
-```
-      - INDEXER_URL=https://wazuh.indexer:9100
-```
+5) Edite o arquivo do docker compose na linha 53 onde tem a porta 9200, alterar para 9100. Conforme mostrado abaixo:
 
 ```
       - "9100:9200"
@@ -97,3 +93,20 @@ docker compose up -d
 ```
 
 Após a instalação realizar o acesso via browser: http://<seu_ip>:3001 e criar seu login e senha.
+
+## Para remover
+
+Para remover basta executar os dois comandos abaixo:
+
+```
+docker compose down
+```
+
+```
+docker volume rm $(docker volume ls -q -f name=shuffle)
+```
+Se houver containers de worker, para remover todos de uma vez, basta executar:
+
+```
+docker stop $(docker ps -q --filter "name=worker-")
+```
