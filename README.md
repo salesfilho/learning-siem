@@ -206,9 +206,6 @@ O curso tem como objetivos principais apresentar os fundamentos teóricos e real
 - Início:**  07/09/2025									
 - Término:**  30/09/2025	
 
-Cronograma completo do projeto disponível em:
-https://docs.google.com/spreadsheets/d/10znX0-4Jwpc0DNNL0VGj6Znq1TqfITWyYeKDaeruU7E/edit?gid=1783607407#gid=1783607407
-
 
 ### **3. Papéis e Responsabilidades**
 
