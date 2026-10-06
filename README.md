@@ -5,7 +5,6 @@
 
 Visão geral dos sistemas de detecção e prevenção de ameaças. Aplicação de inteligência artificial e machine learning na análise de comportamentos anômalos. Ferramentas de análise de logs e correlacionadores de eventos (SIEM) para identificação de incidentes de segurança.
 
-https://docs.google.com/spreadsheets/d/1SJzScpDU_WYSRct4hfk0BEO3OnlhUNWtU0rwoEiqYBg/edit?gid=1526676492#gid=1526676492
 
 ---
 
